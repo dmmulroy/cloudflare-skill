@@ -118,7 +118,7 @@
         "Product index Summary column removed",
         "Total lines <200"
       ],
-      "passes": false
+      "passes": true
     },
     {
       "id": "crossref-1",

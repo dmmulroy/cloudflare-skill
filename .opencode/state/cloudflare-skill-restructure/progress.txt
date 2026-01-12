@@ -126,3 +126,14 @@ Started: 2026-01-12
   - Post-split trimming pass required for dense content (7 files trimmed)
   - Compression: inline examples, compact tables, semicolon lists, reference other files
   - Critical refs (storage, AI, workers) prioritized for cross-references
+
+## Task - trim-1
+- Trimmed main SKILL.md from 233→199 lines
+- Files changed:
+  - skill/cloudflare/SKILL.md: Added references field to frontmatter (top 5 products), removed Summary column from all Product Index tables, removed Common Patterns and Loading References sections
+  - skill/cloudflare/patterns.md: NEW - extracted Common Patterns section (28 lines)
+  - .opencode/state/cloudflare-skill-restructure/prd.json: marked trim-1 as passes: true
+- **Learnings:**
+  - Table compression: remove verbose columns when product names suffice
+  - Extract reusable content to separate files rather than delete
+  - Frontmatter references field helps agents prioritize key products
