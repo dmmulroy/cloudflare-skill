@@ -3,7 +3,29 @@ PRD: cloudflare-skill-restructure
 Started: 2026-01-12
 
 ## Codebase Patterns
-<!-- Consolidate reusable patterns here -->
+
+### Reference Split Pattern
+- README.md: Overview, key commands, navigation (<100 lines)
+- configuration.md: Config reference, compact examples (<150 lines)
+- api.md: Programmatic APIs, testing patterns (<150 lines)
+- patterns.md: Common workflows, best practices (<150 lines)
+- gotchas.md: Issues, troubleshooting, limits (<100 lines)
+- All files: "See Also" section with cross-links to other files
 
 ---
 <!-- Task logs below - APPEND ONLY -->
+
+## Task - split-1
+- Split 1470-line wrangler/SKILL.md into 5 focused files
+- Files created:
+  - README.md (90 lines) - Overview, essential commands
+  - configuration.md (128 lines) - Config reference, bindings
+  - api.md (140 lines) - Programmatic API (unstable_startWorker, getPlatformProxy)
+  - patterns.md (150 lines) - Workflows, testing, optimization
+  - gotchas.md (93 lines) - Common issues, troubleshooting
+- Deleted: SKILL.md (1470 lines)
+- All files have cross-reference sections
+- **Learnings:**
+  - Consolidate related subsections into single code blocks with comments
+  - Aggressive line reduction: combine similar examples, remove redundancy
+  - Cross-references at bottom keep navigation consistent

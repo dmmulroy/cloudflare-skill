@@ -14,7 +14,7 @@
         "Original SKILL.md deleted",
         "All files have cross-reference sections"
       ],
-      "passes": false
+      "passes": true
     },
     {
       "id": "split-2",
