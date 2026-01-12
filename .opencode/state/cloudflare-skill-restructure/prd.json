@@ -229,7 +229,7 @@
         "Networking tree includes smart-placement/",
         "Store data tree includes cache-reserve/"
       ],
-      "passes": false
+      "passes": true
     },
     {
       "id": "polish-2",

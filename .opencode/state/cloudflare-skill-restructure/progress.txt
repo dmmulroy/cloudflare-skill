@@ -269,3 +269,16 @@ Started: 2026-01-12
   - Task spec highlighted agents-sdk + tool from 'ai' but broader verification found all missing Agent/Connection/WSMessage imports
   - No type checking available in docs-only repo, verification by visual inspection
   - Pattern: Each standalone code example should include necessary imports for copy-paste usage
+
+## Task - polish-1
+- Completed decision trees in main SKILL.md (200 lines maintained)
+- Run code tree: added snippets/, tail-workers/, smart-placement/
+- Networking tree: added smart-placement/ (optimize latency to backend)
+- Store data tree: added cache-reserve/ (persistent cache)
+- Files changed: skill/cloudflare/SKILL.md
+- **Learnings:**
+  - snippets: lightweight edge logic for HTTP modification
+  - tail-workers: process Worker execution events (logs/observability)
+  - smart-placement: optimize placement for backend latency (not user latency)
+  - cache-reserve: persistent R2-backed cache storage
+  - Compression: consolidated IaC tree from 3 lines to 1 line to stay under 200 limit

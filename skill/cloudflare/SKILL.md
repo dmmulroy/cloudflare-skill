@@ -25,7 +25,10 @@ Need to run code?
 ├─ Long-running multi-step jobs → workflows/
 ├─ Run containers → containers/
 ├─ Multi-tenant (customers deploy code) → workers-for-platforms/
-└─ Scheduled tasks (cron) → cron-triggers/
+├─ Scheduled tasks (cron) → cron-triggers/
+├─ Lightweight edge logic (modify HTTP) → snippets/
+├─ Process Worker execution events (logs/observability) → tail-workers/
+└─ Optimize latency to backend infrastructure → smart-placement/
 ```
 
 ### "I need to store data"
@@ -39,7 +42,8 @@ Need storage?
 ├─ Vector embeddings (AI/semantic search) → vectorize/
 ├─ Strongly-consistent per-entity state → durable-objects/ (DO storage)
 ├─ Secrets management → secrets-store/
-└─ Streaming ETL to R2 → pipelines/
+├─ Streaming ETL to R2 → pipelines/
+└─ Persistent cache (long-term retention) → cache-reserve/
 ```
 
 ### "I need AI/ML"
@@ -62,6 +66,7 @@ Need networking?
 ├─ WebRTC TURN server → turn/
 ├─ Private network connectivity → network-interconnect/
 ├─ Optimize routing → argo-smart-routing/
+├─ Optimize latency to backend (not user) → smart-placement/
 └─ Real-time video/audio → realtimekit/ or realtime-sfu/
 ```
 
@@ -90,12 +95,8 @@ Need media?
 ### "I need infrastructure-as-code"
 
 ```
-Need IaC?
-├─ Pulumi → pulumi/
-├─ Terraform → terraform/
-└─ Direct API → api/
+Need IaC? → pulumi/ (Pulumi), terraform/ (Terraform), or api/ (REST API)
 ```
-
 ## Product Index
 
 ### Compute & Runtime
