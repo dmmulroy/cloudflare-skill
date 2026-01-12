@@ -158,7 +158,7 @@
         "In This Reference section with internal links",
         "See Also section with links to workers, hyperdrive"
       ],
-      "passes": false
+      "passes": true
     },
     {
       "id": "crossref-5",

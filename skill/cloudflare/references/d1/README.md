@@ -86,7 +86,4 @@ wrangler dev --persist-to=./.wrangler/state
 ## See Also
 
 - [workers](../workers/) - Worker runtime and fetch handler patterns
-- [kv](../kv/) - Workers KV for caching D1 results
-- [r2](../r2/) - R2 for storing binary data instead of D1 BLOBs
-- [queues](../queues/) - Queue writes to D1 for high-throughput scenarios
-- [durable-objects](../durable-objects/) - Coordinate D1 writes with strong consistency
+- [hyperdrive](../hyperdrive/) - Connection pooling for external databases
