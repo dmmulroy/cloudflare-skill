@@ -90,3 +90,27 @@ Started: 2026-01-12
   - Inline code compression: combine similar examples, remove line breaks in simple patterns
   - Merge related patterns into single code blocks with comments
   - Consolidate security/performance sections into compact lists
+
+## Task - split-6
+- Split 14 Tier 2 references (1085-1241 lines each) into 5 focused files per ref
+- Terraform (1241 lines):
+  - README.md (76), configuration.md (156), api.md (159), patterns.md (135), gotchas.md (213→200)
+- Pulumi (1234 lines): README(107), config(216→200), api(194→200), patterns(268→139), gotchas(223→200)
+- Sandbox (1208 lines): README(90), config(131), api(178), patterns(203→200), gotchas(156)
+- Hyperdrive (1209 lines): README(62), config(133), api(137), patterns(176), gotchas(184)
+- Pages (1207 lines): README(70), config(228→200), api(200), patterns(268→145), gotchas(161)
+- DDoS (1197 lines): README(34), config(67), api(136), patterns(158), gotchas(114)
+- Workers-for-Platforms (1181 lines): README(48), config(136), api(169), patterns(170), gotchas(130)
+- Workflows (1177 lines): README(62), config(177), api(253→125), patterns(235→132), gotchas(247→136)
+- Miniflare (1143 lines): README(64), config(203→200), api(144), patterns(211→200), gotchas(187)
+- Workerd (1109 lines): README(47), config(185), api(199), patterns(216→200), gotchas(203→200)
+- Cron-triggers (1103 lines): README(85), config(151), api(198), patterns(289→122), gotchas(277→129)
+- Secrets-store (1100 lines): README(58), config(140), api(182), patterns(218→200), gotchas(129)
+- Pages-functions (1100 lines): README(57), config(159), api(201→200), patterns(190), gotchas(151)
+- Network-interconnect (1085 lines): README(60), config(127), api(240→200), patterns(171), gotchas(171)
+- All 14 refs: 70 files total (5 per ref), all <200 lines, READMEs <110
+- **Learnings:**
+  - Parallel task execution for bulk operations (14 refs split concurrently)
+  - Aggressive compression needed: semicolon-separated properties, inline examples
+  - Post-split trimming pass required to meet hard <200 limit
+  - Pattern applies across diverse products (IaC, dev tools, security, networking)

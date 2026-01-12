@@ -93,7 +93,7 @@
         "pages-functions/ split into <200 line files",
         "network-interconnect/ split into <200 line files"
       ],
-      "passes": false
+      "passes": true
     },
     {
       "id": "split-7",
