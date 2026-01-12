@@ -104,7 +104,7 @@
         "Each has README.md with overview",
         "Each has appropriate sub-files (config, api, patterns, gotchas)"
       ],
-      "passes": false
+      "passes": true
     },
     {
       "id": "trim-1",

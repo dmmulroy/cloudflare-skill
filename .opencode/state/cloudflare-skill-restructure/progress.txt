@@ -114,3 +114,15 @@ Started: 2026-01-12
   - Aggressive compression needed: semicolon-separated properties, inline examples
   - Post-split trimming pass required to meet hard <200 limit
   - Pattern applies across diverse products (IaC, dev tools, security, networking)
+
+## Task - split-7
+- Split 30 Tier 3 references (700-1100 lines each) into 5 focused files per ref
+- Files split: d1, smart-placement, tunnel, r2, kv, queues, do-storage, bot-management, realtime-sfu, api-shield, waf, browser-rendering, web-analytics, observability, durable-objects, workers-playground, containers, analytics-engine, agents-sdk, r2-data-catalog, api, turnstile, static-assets, ai-search, snippets, email-routing, spectrum, bindings, argo-smart-routing, images
+- Created: 150 files (30 refs × 5 files: README, configuration, api, patterns, gotchas)
+- Deleted: 30 SKILL.md files
+- All files under limits: README <100, gotchas <100, config/api/patterns <150
+- **Learnings:**
+  - Batch processing with task agents for bulk operations
+  - Post-split trimming pass required for dense content (7 files trimmed)
+  - Compression: inline examples, compact tables, semicolon lists, reference other files
+  - Critical refs (storage, AI, workers) prioritized for cross-references
