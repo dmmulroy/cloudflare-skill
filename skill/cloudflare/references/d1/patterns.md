@@ -17,7 +17,7 @@ async function getUsers({ page, pageSize }: { page: number; pageSize: number }, 
 
 ```typescript
 async function searchUsers(filters: { name?: string; email?: string; active?: boolean }, env: Env) {
-  const conditions: string[] = [], params: any[] = [];
+  const conditions: string[] = [], params: (string | number | boolean | null)[] = [];
   if (filters.name) { conditions.push('name LIKE ?'); params.push(`%${filters.name}%`); }
   if (filters.email) { conditions.push('email = ?'); params.push(filters.email); }
   if (filters.active !== undefined) { conditions.push('active = ?'); params.push(filters.active ? 1 : 0); }
@@ -115,7 +115,7 @@ async function validateSession(token: string, env: Env) {
 ## Analytics/Events
 
 ```typescript
-async function logEvent(event: { type: string; userId?: number; metadata: any }, env: Env) {
+async function logEvent(event: { type: string; userId?: number; metadata: Record<string, unknown> }, env: Env) {
   return await env.DB.prepare(`
     INSERT INTO events (type, user_id, metadata, timestamp)
     VALUES (?, ?, ?, CURRENT_TIMESTAMP)

@@ -197,3 +197,15 @@ Started: 2026-01-12
   - Cross-product links should reflect actual integration patterns (e.g., sandbox→durable-objects, workflows→queues)
   - Inline compression for auth examples: single code block with comments > separate sections
   - Standard structure: In This Reference (internal nav) → See Also (external integrations)
+
+## Task - fix-1
+- Fixed type safety violations in d1/patterns.md
+- Files changed:
+  - skill/cloudflare/references/d1/patterns.md (2 violations fixed)
+- Changes:
+  - Line 20: `params: any[]` → `params: (string | number | boolean | null)[]`
+  - Line 118: `metadata: any` → `metadata: Record<string, unknown>`
+- **Learnings:**
+  - SQL params accept string | number | boolean | null for bind operations
+  - JSON metadata should use Record<string, unknown> not any
+  - Verified no remaining any types in d1 reference using rg

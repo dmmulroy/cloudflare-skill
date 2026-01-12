@@ -188,7 +188,7 @@
         "Replace any[] with (string | number | boolean | null)[]",
         "No any types in TypeScript examples"
       ],
-      "passes": false
+      "passes": true
     },
     {
       "id": "fix-2",
