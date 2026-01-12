@@ -10,13 +10,6 @@
 
 ### Wrangler Setup
 
-**wrangler.toml:**
-```toml
-[[analytics_engine_datasets]]
-binding = "WEATHER"
-dataset = "weather_data"
-```
-
 **wrangler.jsonc:**
 ```jsonc
 {

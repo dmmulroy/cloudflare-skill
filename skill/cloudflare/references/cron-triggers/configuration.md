@@ -20,22 +20,6 @@
 }
 ```
 
-## wrangler.toml
-
-```toml
-name = "my-cron-worker"
-main = "src/index.ts"
-compatibility_date = "2025-01-01"  # Use current date for new projects
-
-[triggers]
-crons = [
-  "*/5 * * * *",     # Every 5 minutes
-  "0 */2 * * *",     # Every 2 hours
-  "0 9 * * MON-FRI", # Weekdays at 9am UTC
-  "0 2 1 * *"        # Monthly on 1st at 2am UTC
-]
-```
-
 ## Environment-Specific Schedules
 
 ```jsonc
@@ -57,19 +41,6 @@ crons = [
     }
   }
 }
-```
-
-```toml
-name = "my-cron-worker"
-
-[triggers]
-crons = ["0 */6 * * *"]  # Prod: every 6 hours
-
-[env.staging.triggers]
-crons = ["*/15 * * * *"]  # Staging: every 15min
-
-[env.dev.triggers]
-crons = ["*/5 * * * *"]  # Dev: every 5min
 ```
 
 ## Schedule Format

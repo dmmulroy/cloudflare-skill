@@ -1,19 +1,27 @@
 # D1 Configuration
 
-## wrangler.toml Setup
+## wrangler.jsonc Setup
 
-```toml
-name = "your-worker-name"; main = "src/index.ts"; compatibility_date = "2025-01-01"  # Use current date for new projects
-
-[[d1_databases]]
-binding = "DB"                    # Env variable name
-database_name = "your-db-name"    # Human-readable name
-database_id = "your-database-id"  # UUID from dashboard/CLI
-migrations_dir = "migrations"     # Optional
-
-# Multiple databases
-[[d1_databases]]
-binding = "ANALYTICS_DB"; database_name = "analytics-db"; database_id = "yyy-yyy-yyy"
+```jsonc
+{
+  "name": "your-worker-name",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-01-01", // Use current date for new projects
+  "d1_databases": [
+    {
+      "binding": "DB",                    // Env variable name
+      "database_name": "your-db-name",    // Human-readable name
+      "database_id": "your-database-id",  // UUID from dashboard/CLI
+      "migrations_dir": "migrations"      // Optional
+    },
+    // Multiple databases
+    {
+      "binding": "ANALYTICS_DB",
+      "database_name": "analytics-db",
+      "database_id": "yyy-yyy-yyy"
+    }
+  ]
+}
 ```
 
 ## TypeScript Types

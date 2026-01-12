@@ -39,7 +39,7 @@ uploadImage('./photo.jpg');
 
 Store account hash as an environment variable:
 
-```toml
-# wrangler.toml
-[vars]
-IMAGES_ACCOUNT
+```jsonc
+{
+  "vars": {
+    "IMAGES_ACCOUNT"

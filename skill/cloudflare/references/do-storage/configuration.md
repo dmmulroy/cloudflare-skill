@@ -14,13 +14,6 @@
 }
 ```
 
-**wrangler.toml:**
-```toml
-[[migrations]]
-tag = "v1"
-new_sqlite_classes = ["Counter", "Session"]
-```
-
 ## KV-backed (Legacy)
 
 **wrangler.jsonc:**
@@ -78,11 +71,6 @@ export default {
     "cpu_ms": 300000  // 5 minutes (default 30s)
   }
 }
-```
-
-```toml
-[limits]
-cpu_ms = 300_000
 ```
 
 ## Location Control

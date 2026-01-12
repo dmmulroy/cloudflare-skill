@@ -23,13 +23,6 @@ wrangler kv namespace create MY_NAMESPACE --preview  # For local dev
 }
 ```
 
-**wrangler.toml:**
-```toml
-[[kv_namespaces]]
-binding = "MY_KV"
-id = "abc123xyz789"
-```
-
 ## TypeScript Types
 
 ```typescript

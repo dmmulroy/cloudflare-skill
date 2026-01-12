@@ -52,8 +52,13 @@ CPU: 30s/req, Mem: 128MB/inst, Storage: SQL shares DO quota, Conns: no limit (wa
 
 ## Migration
 `new_sqlite_classes`, test staging, no downgrade w/SQL, careful state
-```toml
-[[migrations]]
-tag = "v1"
-new_sqlite_classes = ["MyAgent"]
+```jsonc
+{
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": ["MyAgent"]
+    }
+  ]
+}
 ```

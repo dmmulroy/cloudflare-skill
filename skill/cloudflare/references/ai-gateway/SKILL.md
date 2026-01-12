@@ -303,17 +303,20 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/ai-gateway/gatew
 
 **Gateway with Workers AI:**
 
-```toml
-# wrangler.toml
-name = "my-worker"
-main = "src/index.ts"
-compatibility_date = "2025-01-01"  # Use current date for new projects
-
-[ai]
-binding = "AI"
-
-[[ai.gateway]]
-id = "my-gateway"
+```jsonc
+{
+  "name": "my-worker",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-01-01", // Use current date for new projects
+  "ai": {
+    "binding": "AI",
+    "gateway": [
+      {
+        "id": "my-gateway"
+      }
+    ]
+  }
+}
 ```
 
 ```typescript
@@ -333,15 +336,16 @@ export default {
 
 **Environment variables for gateways:**
 
-```toml
-# wrangler.toml
-[vars]
-CF_ACCOUNT_ID = "your-account-id"
-GATEWAY_ID = "my-gateway"
-
-# Secrets (use wrangler secret put)
-# CF_API_TOKEN - for authenticated gateways
-# OPENAI_API_KEY - if not using BYOK
+```jsonc
+{
+  "vars": {
+    "CF_ACCOUNT_ID": "your-account-id",
+    "GATEWAY_ID": "my-gateway"
+  }
+  // Secrets (use wrangler secret put)
+  // CF_API_TOKEN - for authenticated gateways
+  // OPENAI_API_KEY - if not using BYOK
+}
 ```
 
 ```bash

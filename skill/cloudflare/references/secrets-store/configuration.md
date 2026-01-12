@@ -4,18 +4,16 @@
 
 ### Basic Binding
 
-```toml
-# wrangler.toml
-secrets_store_secrets = [
-  { binding = "API_KEY", store_id = "abc123", secret_name = "stripe_api_key" }
-]
-```
-
 ```jsonc
-// wrangler.jsonc
-"secrets_store_secrets": [
-  { "binding": "API_KEY", "store_id": "abc123", "secret_name": "stripe_api_key" }
-]
+{
+  "secrets_store_secrets": [
+    {
+      "binding": "API_KEY",
+      "store_id": "abc123",
+      "secret_name": "stripe_api_key"
+    }
+  ]
+}
 ```
 
 Fields:
@@ -25,16 +23,29 @@ Fields:
 
 ### Environment-Specific
 
-```toml
-[env.production]
-secrets_store_secrets = [
-  { binding = "API_KEY", store_id = "prod-store", secret_name = "prod_api_key" }
-]
-
-[env.staging]
-secrets_store_secrets = [
-  { binding = "API_KEY", store_id = "staging-store", secret_name = "staging_api_key" }
-]
+```jsonc
+{
+  "env": {
+    "production": {
+      "secrets_store_secrets": [
+        {
+          "binding": "API_KEY",
+          "store_id": "prod-store",
+          "secret_name": "prod_api_key"
+        }
+      ]
+    },
+    "staging": {
+      "secrets_store_secrets": [
+        {
+          "binding": "API_KEY",
+          "store_id": "staging-store",
+          "secret_name": "staging_api_key"
+        }
+      ]
+    }
+  }
+}
 ```
 
 ## Wrangler Commands

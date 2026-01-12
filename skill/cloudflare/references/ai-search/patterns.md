@@ -10,12 +10,6 @@
 
 ### Configuration
 
-**wrangler.toml:**
-```toml
-[ai]
-binding = "AI"
-```
-
 **wrangler.jsonc:**
 ```jsonc
 {

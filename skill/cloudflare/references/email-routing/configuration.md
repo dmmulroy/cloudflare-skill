@@ -2,17 +2,6 @@
 
 ### Basic Email Worker
 
-```toml
-name = "email-worker"
-main = "src/index.ts"
-compatibility_date = "2025-01-01"  # Use current date for new projects
-
-[[send_email]]
-name = "EMAIL"
-```
-
-Or in JSON:
-
 ```jsonc
 {
   "name": "email-worker",
@@ -28,20 +17,28 @@ Or in JSON:
 
 ### With KV/R2 Bindings
 
-```toml
-name = "email-processor"
-main = "src/index.ts"
-
-[[send_email]]
-name = "EMAIL"
-
-[[kv_namespaces]]
-binding = "EMAIL_METADATA"
-id = "your-kv-namespace-id"
-
-[[r2_buckets]]
-binding = "EMAIL_BUCKET"
-bucket_name = "email-archive"
+```jsonc
+{
+  "name": "email-processor",
+  "main": "src/index.ts",
+  "send_email": [
+    {
+      "name": "EMAIL"
+    }
+  ],
+  "kv_namespaces": [
+    {
+      "binding": "EMAIL_METADATA",
+      "id": "your-kv-namespace-id"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "EMAIL_BUCKET",
+      "bucket_name": "email-archive"
+    }
+  ]
+}
 ```
 
 ### Local Development

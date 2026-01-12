@@ -233,7 +233,6 @@ export default {
 ### Minimal Config (Local Dev)
 
 ```jsonc
-// wrangler.jsonc
 {
   "send_email": [
     {
@@ -243,31 +242,28 @@ export default {
 }
 ```
 
-```toml
-# wrangler.toml
-[[send_email]]
-name = "EMAIL"
-```
-
 ### Full Production Config
 
-```toml
-name = "email-worker"
-main = "src/index.ts"
-compatibility_date = "2025-01-01"  # Use current date for new projects
-
-# Email binding
-[[send_email]]
-name = "EMAIL"
-
-# Add KV for email archival
-[[kv_namespaces]]
-binding = "EMAIL_ARCHIVE"
-id = "your-kv-namespace-id"
-
-# Add secrets for API keys
-[vars]
-WEBHOOK_URL = "https://example.com/webhook"
+```jsonc
+{
+  "name": "email-worker",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-01-01", // Use current date for new projects
+  "send_email": [
+    {
+      "name": "EMAIL"
+    }
+  ],
+  "kv_namespaces": [
+    {
+      "binding": "EMAIL_ARCHIVE",
+      "id": "your-kv-namespace-id"
+    }
+  ],
+  "vars": {
+    "WEBHOOK_URL": "https://example.com/webhook"
+  }
+}
 ```
 
 ## Local Development

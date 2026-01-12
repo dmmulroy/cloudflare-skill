@@ -1,10 +1,9 @@
 ## Wrangler Configuration Patterns
 
-### JSON vs TOML
+### JSON Configuration
 
-**JSON (Recommended for new projects):**
+**wrangler.jsonc:**
 ```jsonc
-// wrangler.jsonc
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "my-worker",
@@ -14,17 +13,6 @@
     "API_URL": "https://api.example.com"
   }
 }
-```
-
-**TOML (Legacy):**
-```toml
-# wrangler.toml
-name = "my-worker"
-main = "src/index.ts"
-compatibility_date = "2025-01-01"  # Use current date for new projects
-
-[vars]
-API_URL = "https://api.example.com"
 ```
 
 ### Environment-Specific Configuration

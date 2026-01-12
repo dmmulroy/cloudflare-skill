@@ -25,14 +25,6 @@ wrangler queues create my-queue --delivery-delay-secs=300
 }
 ```
 
-**wrangler.toml:**
-```toml
-[[queues.producers]]
-queue = "my-queue-name"
-binding = "MY_QUEUE"
-delivery_delay = 60
-```
-
 ## Consumer Configuration (Push-based)
 
 **wrangler.jsonc:**
@@ -51,17 +43,6 @@ delivery_delay = 60
     ]
   }
 }
-```
-
-**wrangler.toml:**
-```toml
-[[queues.consumers]]
-queue = "my-queue-name"
-max_batch_size = 10
-max_batch_timeout = 5
-max_retries = 3
-dead_letter_queue = "my-dlq"
-retry_delay = 300
 ```
 
 ## Consumer Configuration (Pull-based)

@@ -178,23 +178,28 @@ npm run deploy
 npm run cf-typegen
 ```
 
-## wrangler.toml Configuration
+## wrangler.jsonc Configuration
 
 C3 generates:
 
-```toml
-name = "my-app"
-main = "src/index.ts"
-compatibility_date = "2025-01-01"  # Use current date for new projects
-
-# Bindings added based on template
-[[kv_namespaces]]
-binding = "MY_KV"
-id = "..."
-
-[[d1_databases]]
-binding = "DB"
-database_id = "..."
+```jsonc
+{
+  "name": "my-app",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-01-01", // Use current date for new projects
+  "kv_namespaces": [
+    {
+      "binding": "MY_KV",
+      "id": "..."
+    }
+  ],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_id": "..."
+    }
+  ]
+}
 ```
 
 ## Best Practices
