@@ -28,6 +28,12 @@ export class MyAgent extends Agent<Env> {
 }
 ```
 
+## In This Reference
+- [configuration.md](./configuration.md) - SDK setup, wrangler config
+- [api.md](./api.md) - Agent class API, lifecycle hooks
+- [patterns.md](./patterns.md) - Common workflows, best practices
+- [gotchas.md](./gotchas.md) - Common issues, limits
+
 ## See Also
 - durable-objects - Agent infrastructure
 - d1 - External database integration

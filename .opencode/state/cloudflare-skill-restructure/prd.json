@@ -148,7 +148,7 @@
         "In This Reference section with internal links",
         "See Also section with links to durable-objects, d1, workers-ai, vectorize"
       ],
-      "passes": false
+      "passes": true
     },
     {
       "id": "crossref-4",

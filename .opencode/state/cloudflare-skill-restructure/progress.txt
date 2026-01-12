@@ -154,3 +154,13 @@ Started: 2026-01-12
 - **Learnings:**
   - Cross-product references help users discover complementary services
   - Pattern: Pages + D1/KV for data, Pages Functions for routing logic
+
+## Task - crossref-3
+- Added cross-references to agents-sdk/README.md
+- In This Reference section: added links to configuration, api, patterns, gotchas
+- See Also section: links already present for durable-objects, d1, workers-ai, vectorize
+- File modified: skill/cloudflare/references/agents-sdk/README.md (35→40 lines, well under <100 limit)
+- **Learnings:**
+  - See Also section already present from split-7 task
+  - Only needed to add In This Reference section for internal navigation
+  - Pattern: AI agents integrate with DO (infrastructure), D1 (SQL), Workers AI (models), Vectorize (embeddings)
