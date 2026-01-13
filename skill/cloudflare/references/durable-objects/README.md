@@ -11,6 +11,42 @@ Durable Objects combine compute with storage in globally-unique, strongly-consis
 - **Stateful serverless**: In-memory state + persistent storage
 - **Single-threaded**: Serial request processing (no race conditions)
 
+## When to Use DOs
+
+Use DOs for **stateful coordination**, not stateless request handling:
+- **Coordination**: Multiple clients interacting with shared state (chat rooms, multiplayer games)
+- **Strong consistency**: Operations must serialize to avoid races (booking systems, inventory)
+- **Per-entity storage**: Each user/tenant/resource needs isolated database (multi-tenant SaaS)
+- **Persistent connections**: Long-lived WebSockets that survive across requests
+- **Per-entity scheduled work**: Each entity needs its own timer (subscription renewals, game timeouts)
+
+## When NOT to Use DOs
+
+| Scenario | Use Instead |
+|----------|-------------|
+| Stateless request handling | Workers |
+| Maximum global distribution | Workers |
+| High fan-out (independent requests) | Workers |
+| Global singleton handling all traffic | Shard across multiple DOs |
+| High-frequency pub/sub | Queues |
+| Long-running continuous processes | Workers + Alarms |
+| Chatty microservice (every request) | Reconsider architecture |
+| Eventual consistency OK, read-heavy | KV |
+| Relational queries across entities | D1 |
+
+## Design Heuristics
+
+Model each DO around your **atom of coordination**—the logical unit needing serialized access (user, room, document, session).
+
+| Characteristic | Feels Right | Question It | Reconsider |
+|----------------|-------------|-------------|------------|
+| Requests/sec (sustained) | < 100 | 100-500 | > 500 |
+| Storage keys | < 100 | 100-1000 | > 1000 |
+| Total state size | < 10MB | 10MB-100MB | > 1GB |
+| Alarm frequency | Minutes-hours | Every 30s | Every few seconds |
+| WebSocket duration | Short bursts | Hours (hibernating) | Days always-on |
+| Fan-out from this DO | Never/rarely | To < 10 DOs | To 100+ DOs |
+
 ## Core Concepts
 
 ### Class Structure
