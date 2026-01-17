@@ -54,7 +54,7 @@ main() {
   # Create temp directory
   local tmp_dir
   tmp_dir=$(mktemp -d)
-  trap 'rm -rf "$tmp_dir"' EXIT
+  trap "rm -rf '$tmp_dir'" EXIT
 
   # Clone repo
   echo "Fetching skill..."
