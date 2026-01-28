@@ -13,6 +13,18 @@ references:
 
 Consolidated skill for building on the Cloudflare platform. Use decision trees below to find the right product, then load detailed references.
 
+## Authentication (Required Before Deploy)
+
+Verify auth before `wrangler deploy`, `wrangler pages deploy`, or `npm run deploy`:
+
+```bash
+npx wrangler whoami    # Shows account if authenticated
+```
+
+Not authenticated? → `references/wrangler/auth.md`
+- Interactive/local: `wrangler login` (one-time OAuth)
+- CI/CD: Set `CLOUDFLARE_API_TOKEN` env var
+
 ## Quick Decision Trees
 
 ### "I need to run code"

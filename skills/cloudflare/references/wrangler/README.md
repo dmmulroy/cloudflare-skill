@@ -103,6 +103,7 @@ wrangler tail --status error      # Filter by status
 
 ## In This Reference
 
+- [auth.md](./auth.md) - Authentication setup (`wrangler login`, API tokens)
 - [configuration.md](./configuration.md) - wrangler.jsonc setup, environments, bindings
 - [api.md](./api.md) - Programmatic API (`startWorker`, `getPlatformProxy`, events)
 - [patterns.md](./patterns.md) - Common workflows and development patterns
@@ -125,7 +126,12 @@ Need to configure something?
 Development not working?
 ├─ Local differs from production → Use `wrangler dev --remote`
 ├─ Bindings not available → gotchas.md §Binding Not Available
-└─ Auth issues → wrangler login
+└─ Auth issues → auth.md
+
+Authentication issues?
+├─ "Not logged in" / "Unauthorized" → auth.md
+├─ First time deploying → `wrangler login` (one-time OAuth)
+└─ CI/CD setup → auth.md §API Token
 ```
 
 ## See Also
