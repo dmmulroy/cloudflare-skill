@@ -1,12 +1,16 @@
 ---
 name: cloudflare
-description: Comprehensive Cloudflare platform skill covering Workers, Pages, storage (KV, D1, R2), AI (Workers AI, Vectorize, Agents SDK), networking (Tunnel, Spectrum), security (WAF, DDoS), and infrastructure-as-code (Terraform, Pulumi). Use for any Cloudflare development task.
+description: Comprehensive Cloudflare platform skill covering Workers, Pages, storage (KV, D1, R2), AI (Workers AI, Vectorize, Agents SDK), networking (Tunnel, Spectrum), security (WAF, DDoS), Zero Trust (Access, Gateway, WARP, DLP), and infrastructure-as-code (Terraform, Pulumi). Use for any Cloudflare development task.
 references:
   - workers
   - pages
   - d1
   - durable-objects
   - workers-ai
+  - access
+  - gateway
+  - devices
+  - dlp
 ---
 
 # Cloudflare Platform Skill
@@ -24,6 +28,26 @@ npx wrangler whoami    # Shows account if authenticated
 Not authenticated? → `references/wrangler/auth.md`
 - Interactive/local: `wrangler login` (one-time OAuth)
 - CI/CD: Set `CLOUDFLARE_API_TOKEN` env var
+
+### Zero Trust API Authentication
+
+For Zero Trust API operations:
+
+```bash
+# Verify API token
+curl -s -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  "https://api.cloudflare.com/client/v4/user/tokens/verify" | jq .
+
+# Get account ID
+curl -s -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  "https://api.cloudflare.com/client/v4/accounts" | jq '.result[] | {id, name}'
+```
+
+**Required permissions for Zero Trust:**
+- Account > Zero Trust > Edit
+- Account > Access: Apps and Policies > Edit
+- Account > Zero Trust: Gateway > Edit
+- Account > Zero Trust: Tunnels > Edit
 
 ## Quick Decision Trees
 
@@ -94,6 +118,37 @@ Need security?
 └─ Credential leak detection → waf/ (managed ruleset)
 ```
 
+### "I need Zero Trust / secure access"
+
+```
+Need Zero Trust?
+├─ Control who can access apps?
+│   ├─ Web application with login page → access/ (self-hosted app)
+│   ├─ SaaS application (Okta, GitHub) → access/ (SaaS app)
+│   ├─ SSH/RDP/VNC access → access/ (infrastructure app)
+│   ├─ Internal service via browser → access/ + tunnel/
+│   └─ API/service-to-service auth → access/ (service tokens)
+├─ Filter/inspect traffic?
+│   ├─ Block malicious domains (DNS) → gateway/ (DNS policies)
+│   ├─ Block categories (gambling, adult) → gateway/ (DNS policies)
+│   ├─ Inspect/block HTTP traffic → gateway/ (HTTP policies)
+│   └─ Custom allow/block lists → gateway/ (lists)
+├─ Connect networks/services?
+│   ├─ Expose local service securely → tunnel/
+│   ├─ Connect office network → tunnel/ + devices/
+│   ├─ Private network routing → tunnel/ (private networks)
+│   └─ Replace VPN → tunnel/ + devices/ (WARP)
+├─ Manage endpoint devices?
+│   ├─ Deploy WARP client → devices/
+│   ├─ Device compliance checks → devices/ (posture)
+│   ├─ Split tunnel configuration → devices/ (policies)
+│   └─ MDM integration → devices/ (posture integrations)
+└─ Prevent data leaks?
+    ├─ Detect PII/credit cards → dlp/ (profiles)
+    ├─ Custom data patterns → dlp/ (custom entries)
+    └─ Block file uploads by type → gateway/ (HTTP policies)
+```
+
 ### "I need media/content"
 
 ```
@@ -149,6 +204,15 @@ Need IaC? → pulumi/ (Pulumi), terraform/ (Terraform), or api/ (REST API)
 | Agents SDK | `references/agents-sdk/` |
 | AI Gateway | `references/ai-gateway/` |
 | AI Search | `references/ai-search/` |
+
+### Zero Trust
+| Product | Reference |
+|---------|-----------|
+| Access | `references/access/` |
+| Gateway | `references/gateway/` |
+| Tunnel | `references/tunnel/` |
+| Devices (WARP) | `references/devices/` |
+| DLP | `references/dlp/` |
 
 ### Networking & Connectivity
 | Product | Reference |
