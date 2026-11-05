@@ -13,7 +13,7 @@ Documentation/skill repository for Cloudflare platform—structured reference do
 ├── README.md             # Project overview + install instructions
 ├── LICENSE               # MIT license
 ├── install.sh            # Installation script
-├── command/
+├── commands/
 │   └── cloudflare.md     # /cloudflare slash command
 └── skills/
     └── cloudflare/
@@ -29,10 +29,10 @@ Documentation/skill repository for Cloudflare platform—structured reference do
 
 ## WHERE TO LOOK
 
-| Task | Location | Notes |
-|------|----------|-------|
-| Find a product | `skills/cloudflare/SKILL.md` | Decision trees + full index |
-| Product reference | `skills/cloudflare/references/<product>/` | 5-file structure |
+| Task              | Location                                  | Notes                       |
+| ----------------- | ----------------------------------------- | --------------------------- |
+| Find a product    | `skills/cloudflare/SKILL.md`              | Decision trees + full index |
+| Product reference | `skills/cloudflare/references/<product>/` | 5-file structure            |
 
 ## CONVENTIONS
 
@@ -52,6 +52,7 @@ git status  # .jj/ present = use jj
 ### Reference File Structure
 
 Every product follows 5-file pattern:
+
 - `README.md` — Overview, when to use
 - `api.md` — Runtime API reference
 - `configuration.md` — `wrangler.toml` + binding setup
@@ -61,6 +62,7 @@ Every product follows 5-file pattern:
 ### YAML Frontmatter
 
 `SKILL.md` files use frontmatter for machine parsing:
+
 ```yaml
 ---
 name: product-name
@@ -79,7 +81,10 @@ references:
 const result = await db.prepare(`SELECT * FROM users WHERE id = ${id}`).all();
 
 // ALWAYS - prepared statements with bind()
-const result = await db.prepare("SELECT * FROM users WHERE id = ?").bind(id).all();
+const result = await db
+  .prepare("SELECT * FROM users WHERE id = ?")
+  .bind(id)
+  .all();
 ```
 
 ### Secrets Management

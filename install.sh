@@ -3,6 +3,7 @@ set -euo pipefail
 
 REPO_URL="https://github.com/dmmulroy/cloudflare-skill.git"
 SKILL_NAME="cloudflare"
+tmp_dir=""
 
 usage() {
   cat <<EOF
@@ -44,15 +45,14 @@ main() {
 
   local command_dir
   if [[ "$install_type" == "global" ]]; then
-    command_dir="${HOME}/.config/opencode/command"
+    command_dir="${HOME}/.config/opencode/commands"
   else
-    command_dir=".opencode/command"
+    command_dir=".opencode/commands"
   fi
 
   echo "Installing ${SKILL_NAME} skill (${install_type})..."
 
   # Create temp directory
-  local tmp_dir
   tmp_dir=$(mktemp -d)
   trap 'rm -rf "$tmp_dir"' EXIT
 
@@ -78,7 +78,7 @@ main() {
   if [[ -d "$command_path" ]] || [[ -f "$command_path" ]]; then
     rm -rf "$command_path"
   fi
-  cp "${tmp_dir}/command/${SKILL_NAME}.md" "$command_path"
+  cp "${tmp_dir}/commands/${SKILL_NAME}.md" "$command_path"
 
   echo "Installed skill to: ${skill_path}"
   echo "Installed command to: ${command_path}"
