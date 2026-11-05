@@ -51,12 +51,13 @@ skills/cloudflare/
         └── gotchas.md        # Pitfalls, limitations
 
 # Command (slash command)
-command/cloudflare.md     # /cloudflare entrypoint
+commands/cloudflare.md    # /cloudflare entrypoint
 ```
 
 ### Decision Trees
 
 The main `SKILL.md` contains decision trees for:
+
 - Running code (Workers, Pages, Durable Objects, Workflows, Containers)
 - Storage (KV, D1, R2, Queues, Vectorize)
 - AI/ML (Workers AI, Vectorize, Agents SDK, AI Gateway)
